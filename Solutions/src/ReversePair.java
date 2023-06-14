@@ -46,6 +46,7 @@ public class ReversePair {
         return inv;
     }
     public static int reversePairs(int[]nums){
+
         return mergeSort(nums,0,nums.length-1);
     }
 }
