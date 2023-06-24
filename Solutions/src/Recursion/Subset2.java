@@ -16,9 +16,9 @@ public class Subset2 {
 
     public static void calculateList(int index, int[] arr, ArrayList<Integer> ds, List<List<Integer>> list){
         list.add(new ArrayList<>(ds));
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = index; i < arr.length; i++) {
             if(i != index && arr[i] == arr[i-1]){
-                return;
+                continue;
             }
             ds.add(arr[i]);
             calculateList(i+1, arr, ds, list);
