@@ -4,38 +4,26 @@ import java.util.*;
 
 public class ADemo {
     public static void main(String[] args) {
-        System.out.println(distributeTicket(25,1));
+        System.out.println(buddyStrings("a", "a"));
     }
 
-    public static int distributeTicket(int N,int K)
-    {
-        List<Integer> list = new ArrayList<>();
-
-        for(int i = 1; i<= N; i++){
-            list.add(i);
-        }
-        int flag = 0;
-        while(!list.isEmpty()){
-            if(flag == 0){
-                for(int i = 0; i< K; i++){
-                    list.remove(i);
-                    if(list.size() == 1){
-                        return list.get(0);
-                    }
-
-                }
-                flag = 1;
-            }else{
-                for(int i = 0; i< K; i++){
-                    list.remove(list.size()-i-1);
-                    if(list.size() == 1){
-                        return list.get(0);
-                    }
-                }
-                flag = 0;
+    public static boolean buddyStrings(String s, String goal) {
+        ArrayList<Character> list1 = new ArrayList<>();
+        ArrayList<Character> list2 = new ArrayList<>();
+        int n = s.length();
+        for(int i = 0; i< n; i++){
+            if(s.charAt(i) != goal.charAt(i)){
+                list1.add(s.charAt(i));
+                list2.add(goal.charAt(i));
             }
         }
 
-        return -1;
+        if(list1.size() != 2) return false;
+
+        if(list1.get(1) == list2.get(0) || list1.get(0) == list2.get(1)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
