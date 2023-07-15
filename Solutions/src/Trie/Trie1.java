@@ -67,6 +67,21 @@ class Trie {
         return temp.isEnd();
     }
 
+    public boolean check(String word){
+        Node temp = root;
+        boolean flag = true;
+
+        for (int i = 0; i < word.length(); i++) {
+            if(temp.containsKey(word.charAt(i))){
+                temp = temp.get(word.charAt(i));
+                if(temp.isEnd() == false) return false;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean startsWith(String prefix) {
         Node temp = root;
 
