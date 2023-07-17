@@ -2,7 +2,7 @@ package Stack;
 
 public class StackImpln {
     public static void main(String[] args) {
-        Stack st = new Stack(5);
+        Stack1 st = new Stack1(5);
         st.push(10);
         st.push(12);
         st.push(14);
@@ -13,16 +13,16 @@ public class StackImpln {
     }
 }
 
-class Stack{
+class Stack1 {
     private int[] arr;
     private final int DEFAULT_VALUE = 10;
     private int top = -1;
 
-    public Stack(){
+    public Stack1(){
         arr = new int[DEFAULT_VALUE];
     }
 
-    public Stack(int size){
+    public Stack1(int size){
         arr = new int[size];
     }
 
