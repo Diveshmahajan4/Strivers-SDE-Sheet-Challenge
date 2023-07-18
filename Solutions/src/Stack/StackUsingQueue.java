@@ -19,7 +19,7 @@ public class StackUsingQueue {
 }
 
 class stack {
-    Queue< Integer > q = new LinkedList< >();
+    Queue< Integer > q = new LinkedList<>();
     void push(int x) {
         q.add(x);
         for (int i = 0; i < q.size() - 1; i++) {
