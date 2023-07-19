@@ -1,6 +1,7 @@
 package Stack;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 // https://leetcode.com/problems/next-greater-element-i/
 public class NextGreaterElement {
@@ -14,18 +15,37 @@ public class NextGreaterElement {
         int n = nums1.length;
         int m = nums2.length;
         int[] arr = new int[n];
+        Arrays.fill(arr, -1);
 
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
                 if(nums1[i] == nums2[j]){
-                    if(j+1 < m && nums2[j] < nums2[j+1]){
-                        arr[i] = nums2[j+1];
-                    }else{
-                        arr[i] = -1;
+                    for(int k = j +1; k < m; k++){
+                        if(nums2[k] > nums2[j]){
+                            arr[i] = nums2[k];
+                            break;
+                        }
                     }
+                    break;
                 }
             }
         }
         return arr;
+    }
+
+    // Similar problem finding next grater element of each element in the array.
+    public static int[] nextGreater(int[] arr, int n) {
+        Stack<Integer> stack = new Stack<>();
+        int[] ng = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && stack.peek() <= arr[i])
+                stack.pop();
+            if (stack.isEmpty())
+                ng[i] = -1;
+            else
+                ng[i] = stack.peek();
+            stack.push(arr[i]);
+        }
+        return ng;
     }
 }
